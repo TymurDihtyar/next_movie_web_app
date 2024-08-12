@@ -9,7 +9,7 @@ export default function Home() {
     const [page, setPage] = useState<string>("1")
 
     useEffect(() => {
-        moviesService.getAll(page).then(({results}) => setMovies(results));
+        moviesService.getAll(page).then((data) => setMovies(data.results));
     }, [page]);
 
     return (
