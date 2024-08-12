@@ -2,13 +2,14 @@
 
 import {useEffect, useState} from "react";
 import {moviesService} from "@/services/moviesService";
+import {IMovie} from "@/interfaces";
 
 export default function Home() {
-    const [movies, setMovies] = useState([])
-    const [page, setPage] = useState("1")
+    const [movies, setMovies] = useState<IMovie[]>([])
+    const [page, setPage] = useState<string>("1")
 
     useEffect(() => {
-        moviesService.getAll(page).then(({results})=>setMovies(results));
+        moviesService.getAll(page).then(({results}) => setMovies(results));
     }, [page]);
 
     return (
