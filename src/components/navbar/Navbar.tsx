@@ -5,40 +5,66 @@ import {
     Flex,
     Avatar,
     HStack,
-    Text,
-    IconButton,
     Button,
     Menu,
     MenuButton,
     MenuList,
     MenuItem,
     MenuDivider,
-    useDisclosure,
     useColorModeValue,
     Stack,
-    Center, useColorMode, Input,
+    Center,
+    useDisclosure,
+    Input,
+    IconButton, useColorMode,
 } from '@chakra-ui/react'
-import {HamburgerIcon, CloseIcon, MoonIcon, SunIcon} from '@chakra-ui/icons'
-import {NavLink} from "@/components/navbar/NavLink";
-
-const Links = ['Movies', 'Genres']
+import {CloseIcon, HamburgerIcon, MoonIcon, SunIcon} from '@chakra-ui/icons'
+import Link from "next/link";
+import {GenreLink} from "@/components/navbar/genres/GenreLink";
+import React from "react";
 
 export default function Navbar() {
-    const {isOpen, onOpen, onClose} = useDisclosure()
-    const {colorMode, toggleColorMode} = useColorMode()
+    const {isOpen, onOpen, onClose} = useDisclosure();
+    const {colorMode, toggleColorMode} = useColorMode();
+    const hoverColor = useColorModeValue('gray.200', 'gray.800');
 
     return (
         <>
-            <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
+            <Box px={10} zIndex={2}>
                 <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-
+                    <IconButton
+                        size={'md'}
+                        icon={isOpen ? <CloseIcon/> : <HamburgerIcon/>}
+                        aria-label={'Open Menu'}
+                        display={{md: 'none'}}
+                        onClick={isOpen ? onClose : onOpen}
+                    />
                     <HStack spacing={8} alignItems={'center'}>
-                        <Box>Filmagnet</Box>
+                        <Box fontSize="xl" fontWeight={500} color={'pink.400'}>
+                            <Link href={'/'}> FILMOTEKA </Link>
+                        </Box>
                         <HStack as={'div'} spacing={4} display={{base: 'none', md: 'flex'}}>
-                            {Links.map((link) => (
-                                <NavLink key={link}>{link}</NavLink>
-                            ))}
-                            <Input variant='flushed' placeholder='Search ' size='sm' width='40' />
+                            <Box fontSize="xl"
+                                 px={2}
+                                 py={1}
+                                 rounded={'md'}
+                                 _hover={{
+                                     textDecoration: 'none',
+                                     bg: hoverColor,
+                                 }}>
+                                <Link href={'/movies'}>Movies</Link>
+                            </Box>
+                            <Box fontSize="xl"
+                                 px={2}
+                                 py={1}
+                                 rounded={'md'}
+                                 _hover={{
+                                     textDecoration: 'none',
+                                     bg: hoverColor,
+                                 }}>
+                                <GenreLink/>
+                            </Box>
+                            <Input variant='flushed' placeholder='Search ' size='sm' width='40' fontSize="l"/>
                         </HStack>
                     </HStack>
                     <Flex alignItems={'center'}>
@@ -48,11 +74,9 @@ export default function Navbar() {
                             </Button>
                             <Menu>
                                 <MenuButton
-                                    as={'button'}
                                     rounded={'full'}
                                     variant={'link'}
-                                    cursor={'pointer'}
-                                    minW={0}>
+                                    cursor={'pointer'}>
                                     <Avatar
                                         size={'sm'}
                                         src={
@@ -82,13 +106,30 @@ export default function Navbar() {
                         </Stack>
                     </Flex>
                 </Flex>
-
                 {isOpen ? (
                     <Box pb={4} display={{md: 'none'}}>
                         <Stack as={'div'} spacing={4}>
-                            {Links.map((link) => (
-                                <NavLink key={link}>{link}</NavLink>
-                            ))}
+                            <Box fontSize="xl"
+                                 px={2}
+                                 py={1}
+                                 rounded={'md'}
+                                 _hover={{
+                                     textDecoration: 'none',
+                                     bg: hoverColor,
+                                 }}>
+                                <Link href={'/movies'}>Movies</Link>
+                            </Box>
+                            <Box fontSize="xl"
+                                 px={2}
+                                 py={1}
+                                 rounded={'md'}
+                                 _hover={{
+                                     textDecoration: 'none',
+                                     bg: hoverColor,
+                                 }}>
+                                <GenreLink/>
+                            </Box>
+                            <Input variant='flushed' placeholder='Search ' size='sm' width='40' fontSize="l"/>
                         </Stack>
                     </Box>
                 ) : null}
