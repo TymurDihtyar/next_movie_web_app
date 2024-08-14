@@ -11,11 +11,11 @@ import {
     Container,
 } from '@chakra-ui/react';
 import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi';
-import Slider, { Settings } from 'react-slick';
+import Slider from 'react-slick';
 import { IMovie } from "@/interfaces";
 import { urls } from "@/constants";
 
-const settings: Settings = {
+const settings = {
     dots: true,
     arrows: false,
     fade: true,
@@ -76,7 +76,7 @@ const Carousel: FC<IProps> = ({ allMovies }) => {
             >
                 <BiRightArrowAlt size="40px" />
             </IconButton>
-            <Slider {...settings} ref={(slider: Slider) => setSlider(slider)}>
+            <Slider {...settings} ref={setSlider}>
                 {threeMovies.map((card, index) => (
                     <Box
                         key={index}
