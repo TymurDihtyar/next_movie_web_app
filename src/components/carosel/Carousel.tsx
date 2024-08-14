@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { FC, useState } from 'react';
 import {
@@ -11,7 +11,7 @@ import {
     Container,
 } from '@chakra-ui/react';
 import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi';
-import Slider, {Settings} from 'react-slick';
+import Slider, { Settings } from 'react-slick';
 import { IMovie } from "@/interfaces";
 import { urls } from "@/constants";
 
@@ -28,7 +28,7 @@ const settings: Settings = {
 };
 
 export interface IProps {
-    allMovies: IMovie[]
+    allMovies: IMovie[];
 }
 
 const Carousel: FC<IProps> = ({ allMovies }) => {
@@ -61,7 +61,7 @@ const Carousel: FC<IProps> = ({ allMovies }) => {
                 color="white"
                 onClick={() => slider?.slickPrev()}
             >
-                <BiLeftArrowAlt size="40px"/>
+                <BiLeftArrowAlt size="40px" />
             </IconButton>
             <IconButton
                 aria-label="right-arrow"
@@ -74,9 +74,9 @@ const Carousel: FC<IProps> = ({ allMovies }) => {
                 color="white"
                 onClick={() => slider?.slickNext()}
             >
-                <BiRightArrowAlt size="40px"/>
+                <BiRightArrowAlt size="40px" />
             </IconButton>
-            <Slider {...settings} ref={slider => setSlider(slider)}>
+            <Slider {...settings} ref={(slider: Slider) => setSlider(slider)}>
                 {threeMovies.map((card, index) => (
                     <Box
                         key={index}
@@ -97,10 +97,10 @@ const Carousel: FC<IProps> = ({ allMovies }) => {
                                 bottom={20}
                                 left={0}
                             >
-                                <Heading fontSize={{base: '3xl', md: '4xl', lg: '5xl'}} color="white">
+                                <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }} color="white">
                                     {card.original_title}
                                 </Heading>
-                                <Text fontSize={{base: 'md', lg: 'lg'}} color="white">
+                                <Text fontSize={{ base: 'md', lg: 'lg' }} color="white">
                                     {card.overview}
                                 </Text>
                             </Stack>
@@ -110,6 +110,6 @@ const Carousel: FC<IProps> = ({ allMovies }) => {
             </Slider>
         </Box>
     );
-}
+};
 
 export default Carousel;
