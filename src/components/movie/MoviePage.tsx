@@ -28,7 +28,6 @@ const MoviePage: React.FC<IProps> = ({ movieType, searchText, genre, title }) =>
 
         if (movieType) {
             const response = await moviesService.getByType(movieType, page);
-            console.log("response", response);
             results = response.results;
             total_pages = response.total_pages;
         } else if (searchText) {
