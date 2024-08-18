@@ -1,4 +1,4 @@
-"use client";
+
 import SearchPageContent from "@/components/searchSuspence/SearchPageContent";
 import {Suspense} from "react";
 

@@ -1,4 +1,3 @@
-"use client";
 import MoviePage from "@/components/movie/MoviePage";
 
 export default function NowPlayingPage() {
