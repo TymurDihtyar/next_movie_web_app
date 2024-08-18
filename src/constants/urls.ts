@@ -14,7 +14,7 @@ const urls = {
     backdrop: (key: string) => `${backdrop}${key}`,
     search,
     characters: (id: string) => `${moviesByType}/${id}/credits`,
-    movie: (id: number) => `${moviesByType}/${id}`,
+    movie: (id: string) => `${moviesByType}/${id}`,
     trailer: (id: string) => `${moviesByType}/${id}/videos`
 }
 
