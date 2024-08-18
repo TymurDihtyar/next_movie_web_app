@@ -1,8 +1,13 @@
 
+import {FC, PropsWithChildren} from "react";
 import { Image, useColorMode } from '@chakra-ui/react';
 import {urls} from "@/constants/urls";
 
-const PosterImage = ({ src }) => {
+interface IProps extends PropsWithChildren {
+    src: string;
+}
+
+const PosterImage: FC<IProps> = ({ src }) => {
   const { colorMode } = useColorMode();
 
   return (
