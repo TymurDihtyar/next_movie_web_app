@@ -7,9 +7,9 @@ import {IChar, IOneMove, ITrailers} from "@/interfaces";
 import {moviesService} from "@/services/moviesService";
 
 export default function MovieInfoPage() {
-    const [oneMovie, setOneMovie] = useState<IOneMove>(null);
-    const [characters, setCharacters] = useState<IChar>(null);
-    const [trailers, setTrailers] = useState<ITrailers>(null);
+    const [oneMovie, setOneMovie] = useState<IOneMove>();
+    const [characters, setCharacters] = useState<IChar>();
+    const [trailers, setTrailers] = useState<ITrailers>();
 
     const movieId = usePathname().split("/").slice(-1)[0];
 

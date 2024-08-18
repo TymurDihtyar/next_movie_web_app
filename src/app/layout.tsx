@@ -11,7 +11,7 @@ const kanit = Kanit({
 });
 
 export const metadata: Metadata = {
-    title: "Movie App",
+    title: "Filmoteka",
     description: "Next.js Movie App",
 };
 
