@@ -9,6 +9,10 @@
       "dest": "/movies"
     },
     {
+      "src": "/movies/search",
+      "dest": "/movies/search"
+    },
+    {
       "src": "/movies/top_rated",
       "dest": "/movies/top_rated"
     },
@@ -25,8 +29,8 @@
       "dest": "/movies/:id"
     },
     {
-      "src": "/movies/genre/:id",
-      "dest": "/movies/genre/:id"
+      "src": "/genres/:id",
+      "dest": "/genres/:id"
     }
   ]
 }
