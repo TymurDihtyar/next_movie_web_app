@@ -22,3 +22,4 @@ export interface IMovie {
     vote_count: number
 }
 
+export type ListType = 'now_playing' | 'popular' | 'top_rated' | 'upcoming';

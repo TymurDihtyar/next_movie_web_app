@@ -1,8 +1,8 @@
 import React, {FC, PropsWithChildren} from 'react';
-import {IGenre} from "@/interfaces";
-import {Box, Flex, Icon, Stack, Text, useColorModeValue} from "@chakra-ui/react";
 import Link from "next/link";
+import {Box, Flex, Icon, Stack, Text, useColorModeValue} from "@chakra-ui/react";
 import {ChevronRightIcon} from "@chakra-ui/icons";
+import {IGenre} from "@/interfaces";
 
 interface IProps extends PropsWithChildren {
     id: number
@@ -10,8 +10,7 @@ interface IProps extends PropsWithChildren {
 }
 
 const SubGenreLink: FC<IProps> = ({id, name}: IGenre) => {
-
-    const hoverColor = useColorModeValue('pink.50', 'gray.900');
+    const hoverColor = useColorModeValue('gray.200', 'gray.1000');
 
     return (
         <Link href={`/genres/${id}`}>

@@ -1,7 +1,10 @@
-export default function MoviesPage() {
+import MoviePage from "@/components/movie/MoviePage";
+
+export default  function MoviesPage() {
+
     return (
         <div>
-            <h1>MoviesPage</h1>
+            <MoviePage title={"Movies"} />
         </div>
     );
 }

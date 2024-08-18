@@ -1,6 +1,5 @@
-import {baseURL, urls} from "@/constants";
-
 import {IData, IGenres} from "@/interfaces";
+import {baseURL, urls} from "@/constants/urls";
 
 const options: RequestInit = {
     cache: 'no-cache',
@@ -22,9 +21,9 @@ const genresService = {
         }
     },
 
-    getByGenreIdMovies: async (page:string, with_genres:string): Promise<IData> => {
+    getByGenreIdMovies: async (with_genres: string, page: number): Promise<IData> => {
         try {
-            const response = await fetch(`${baseURL}/${urls.movies}?page=${page}with_genres=${with_genres}`, options);
+            const response = await fetch(`${baseURL}/${urls.movies}?page=${page}&&with_genres=${with_genres}`, options);
             return await response.json();
         } catch (error) {
             console.error('Error fetching movies:', error.message);

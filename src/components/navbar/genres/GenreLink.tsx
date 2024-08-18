@@ -1,20 +1,13 @@
 'use client'
 
-import {
-    Box,
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
-    Stack,
-    useColorModeValue
-} from "@chakra-ui/react";
+import React, {useEffect, useState} from "react";
+import {Box, Popover, PopoverContent, PopoverTrigger, Stack, useColorModeValue} from "@chakra-ui/react";
 import {genresService} from "@/services/genresService";
 import {IGenre} from "@/interfaces";
-import React, {useEffect, useState} from "react";
 import {SubGenreLink} from "@/components/navbar/genres/SubGenreLink";
 
 export const GenreLink = () => {
-    const linkColor = useColorModeValue('gray.800', 'gray.200')
+    const linkColor = useColorModeValue('pink.400', 'white');
     const linkHoverColor = useColorModeValue('gray.800', 'white')
     const popoverContentBgColor = useColorModeValue('white', 'gray.800')
 

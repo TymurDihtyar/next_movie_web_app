@@ -1,36 +1,21 @@
 'use client'
 
-import {
-    Box,
-    Flex,
-    Avatar,
-    HStack,
-    Button,
-    Menu,
-    MenuButton,
-    MenuList,
-    MenuItem,
-    MenuDivider,
-    useColorModeValue,
-    Stack,
-    Center,
-    useDisclosure,
-    Input,
-    IconButton, useColorMode,
-} from '@chakra-ui/react'
-import {CloseIcon, HamburgerIcon, MoonIcon, SunIcon} from '@chakra-ui/icons'
-import Link from "next/link";
-import {GenreLink} from "@/components/navbar/genres/GenreLink";
 import React from "react";
+import Link from "next/link";
+import {Box, Flex, Avatar, HStack, Button, Menu, MenuButton, MenuList, MenuItem, MenuDivider, useColorModeValue, Stack, Center, useDisclosure, IconButton, useColorMode,} from '@chakra-ui/react'
+import {CloseIcon, HamburgerIcon, MoonIcon, SunIcon} from '@chakra-ui/icons'
+import {GenreLink} from "@/components/navbar/genres/GenreLink";
+import {SearchForm} from "@/components/movie/SearchForm";
 
 export default function Navbar() {
     const {isOpen, onOpen, onClose} = useDisclosure();
     const {colorMode, toggleColorMode} = useColorMode();
-    const hoverColor = useColorModeValue('gray.200', 'gray.800');
+    const hoverColor = useColorModeValue('gray.200', 'pink.400');
+    const linkColor = useColorModeValue('pink.400', 'white');
 
     return (
         <>
-            <Box px={10} zIndex={2}>
+            <Box px={10} zIndex={2} position="relative">
                 <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
                     <IconButton
                         size={'md'}
@@ -45,6 +30,7 @@ export default function Navbar() {
                         </Box>
                         <HStack as={'div'} spacing={4} display={{base: 'none', md: 'flex'}}>
                             <Box fontSize="xl"
+                                 color={linkColor}
                                  px={2}
                                  py={1}
                                  rounded={'md'}
@@ -55,6 +41,7 @@ export default function Navbar() {
                                 <Link href={'/movies'}>Movies</Link>
                             </Box>
                             <Box fontSize="xl"
+                                 color={linkColor}
                                  px={2}
                                  py={1}
                                  rounded={'md'}
@@ -64,7 +51,7 @@ export default function Navbar() {
                                  }}>
                                 <GenreLink/>
                             </Box>
-                            <Input variant='flushed' placeholder='Search ' size='sm' width='40' fontSize="l"/>
+                            <SearchForm/>
                         </HStack>
                     </HStack>
                     <Flex alignItems={'center'}>
@@ -129,7 +116,7 @@ export default function Navbar() {
                                  }}>
                                 <GenreLink/>
                             </Box>
-                            <Input variant='flushed' placeholder='Search ' size='sm' width='40' fontSize="l"/>
+                            <SearchForm/>
                         </Stack>
                     </Box>
                 ) : null}
