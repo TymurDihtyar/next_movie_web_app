@@ -11,7 +11,7 @@ export default async function Home() {
 
     return (
         <VStack spacing={8} align="center" mt="800px" zIndex={1}>
-            {/*{moviesNowPlaying && <Carousel allMovies={moviesNowPlaying.results} />}*/}
+            {moviesNowPlaying && <Carousel allMovies={moviesNowPlaying.results} />}
             {moviesTopRated && <MoviesSlider movies={moviesTopRated.results} sectionTitle="Top Rated" />}
             {moviesUpcoming && <MoviesSlider movies={moviesUpcoming.results} sectionTitle="Upcoming" />}
             {moviesNowPlaying && <MoviesSlider movies={moviesNowPlaying.results} sectionTitle="Now Playing" />}
