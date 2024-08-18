@@ -68,7 +68,7 @@ const MovieInfo: FC<IProps> = ({movieById, characters, trailers}) => {
                     />
                 </AspectRatio>
             </Box>
-            <Box w="full" justify="center" px={8}>
+            <Box w="full" px={8}>
                 <Heading size="lg" mb={4} color={'pink.400'}>Main Cast:</Heading>
                 <Flex wrap="wrap" justify="start" align="center">
                     {characters.map((item) => (
