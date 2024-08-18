@@ -1,15 +1,13 @@
-"use client"
-import MoviePage from "@/components/movie/MoviePage";
-import {useSearchParams} from "next/navigation";
+
+import SearchPageContent from "@/components/searchSuspence/SearchPageContent";
+import {Suspense} from "react";
 
 export default function SearchPage() {
-    const searchParams = useSearchParams();
-    const searchText = searchParams.get('query');
 
 
     return (
-        <>
-            {searchText && <MoviePage searchText={searchText} title={`Search by ${searchText}`}/>}
-        </>
+        <Suspense fallback={<div>Loading...</div>}>
+            <SearchPageContent />
+        </Suspense>
     );
 }
