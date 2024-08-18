@@ -9,6 +9,7 @@ interface IProps {
 }
 
 const MainGrid: FC<IProps> = ({title, movies}) => {
+    console.log(movies)
     return (
         <Box as="main" minH="100vh">
             <Container maxW="90%" py="10" px={{base: 5, "xl": 0}}>

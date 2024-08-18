@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useEffect, useState, useRef } from "react";
 import { IMovie } from "@/interfaces";
@@ -6,7 +6,7 @@ import MainGrid from "@/components/movie/MainGrid";
 import { moviesService } from "@/services/moviesService";
 import { genresService } from "@/services/genresService";
 
-const SCROLL_THRESHOLD = 150;
+const SCROLL_THRESHOLD = 500;
 
 interface IProps {
     movieType?: string;
@@ -19,44 +19,51 @@ const MoviePage: React.FC<IProps> = ({ movieType, searchText, genre, title }) =>
     const [page, setPage] = useState(2);
     const [movies, setMovies] = useState<IMovie[]>([]);
     const [totalPages, setTotalPages] = useState<number>(1);
-
-    const scrollPositionRef = useRef<number>(0);
     const initialLoad = useRef<boolean>(true);
 
     const getMovieList = async (page: number, shouldReset: boolean = false) => {
-        let results, total_pages;
+        let results: IMovie[] = [];
+        let total_pages: number = 1;
 
-        if (movieType) {
-            const response = await moviesService.getByType(movieType, page);
-            results = response.results;
-            total_pages = response.total_pages;
-        } else if (searchText) {
-            const response = await moviesService.getBySearch(searchText, page);
-            results = response.results;
-            total_pages = response.total_pages;
-        } else if (genre) {
-            const response = await genresService.getByGenreIdMovies(genre, page);
-            results = response.results;
-            total_pages = response.total_pages;
-        } else {
-            const response = await moviesService.getAll(page);
-            results = response.results;
-            total_pages = response.total_pages;
+        try {
+            if (movieType) {
+                const response = await moviesService.getByType(movieType, page);
+                results = response.results;
+                total_pages = response.total_pages;
+            } else if (searchText) {
+                const response = await moviesService.getBySearch(searchText, page);
+                results = response.results;
+                total_pages = response.total_pages;
+            } else if (genre) {
+                const response = await genresService.getByGenreIdMovies(genre, page);
+                results = response.results;
+                total_pages = response.total_pages;
+            } else {
+                const response = await moviesService.getAll(page);
+                results = response.results;
+                total_pages = response.total_pages;
+            }
+        } catch (error) {
+            console.error('Error fetching movies:', error);
         }
+
         setTotalPages(total_pages);
         setMovies((prevMovies) => shouldReset ? results : [...prevMovies, ...results]);
     };
 
     const loadInitialPages = async () => {
         await getMovieList(1, true);
-        getMovieList(2);
+        await getMovieList(2);
     };
 
     useEffect(() => {
         if (initialLoad.current) {
             initialLoad.current = false;
-            return;
+            loadInitialPages();
         }
+    }, []);
+
+    useEffect(() => {
         setPage(2);
         setMovies([]);
         loadInitialPages();
@@ -79,20 +86,10 @@ const MoviePage: React.FC<IProps> = ({ movieType, searchText, genre, title }) =>
     }, [page, totalPages]);
 
     useEffect(() => {
-        // Збереження позиції прокрутки перед оновленням компонента
-        scrollPositionRef.current = window.scrollY;
-    });
-
-    useEffect(() => {
-        if (page > 2) { // Завантажуємо дані лише якщо сторінка більша за 2
+        if (page > 2) {
             getMovieList(page);
         }
     }, [page]);
-
-    useEffect(() => {
-        // Відновлення позиції прокрутки після оновлення компонента
-        window.scrollTo(0, scrollPositionRef.current);
-    });
 
     return (
         <MainGrid title={title} movies={movies} />
