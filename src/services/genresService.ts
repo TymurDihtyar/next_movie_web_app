@@ -13,7 +13,7 @@ const options: RequestInit = {
 const genresService = {
     getAll: async (): Promise<IGenres> => {
         try {
-            const response = await fetch(`${baseURL}/${urls.genre}`, options);
+            const response = await fetch(`${baseURL}${urls.genre}`, options);
             return await response.json();
         } catch (error) {
             const e = error as Error;
@@ -24,7 +24,7 @@ const genresService = {
 
     getByGenreIdMovies: async (with_genres: string, page: number): Promise<IData> => {
         try {
-            const response = await fetch(`${baseURL}/${urls.movies}?page=${page}&&with_genres=${with_genres}`, options);
+            const response = await fetch(`${baseURL}${urls.movies}?page=${page}&&with_genres=${with_genres}`, options);
             return await response.json();
         } catch (error) {
             const e = error as Error;

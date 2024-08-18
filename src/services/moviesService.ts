@@ -13,7 +13,7 @@ const options: RequestInit = {
 const moviesService = {
     getAll: async (page: number): Promise<IData> => {
         try {
-            const response = await fetch(`${baseURL}/${urls.movies}?page=${page}`, options);
+            const response = await fetch(`${baseURL}${urls.movies}?page=${page}`, options);
             return await response.json();
         } catch (error) {
             const e = error as Error;
@@ -24,7 +24,7 @@ const moviesService = {
 
     getByType: async ( type: string ,page: number): Promise<IData> => {
         try {
-            const response = await fetch(`${baseURL}/${urls.moviesByType}/${type}?page=${page}`, options);
+            const response = await fetch(`${baseURL}${urls.moviesByType}/${type}?page=${page}`, options);
             return await response.json();
         } catch (error) {
             const e = error as Error;
@@ -35,7 +35,7 @@ const moviesService = {
 
     getBySearch: async (query:string, page: number): Promise<IData> => {
         try {
-            const response = await fetch(`${baseURL}/${urls.search}?page=${page}&&query=${query}`, options);
+            const response = await fetch(`${baseURL}${urls.search}?page=${page}&&query=${query}`, options);
             return await response.json();
         } catch (error) {
             const e = error as Error;
@@ -46,7 +46,7 @@ const moviesService = {
 
     getById: async (id: string): Promise<IOneMove> => {
         try {
-            const response = await fetch(`${baseURL}/${urls.movie(id)}`, options);
+            const response = await fetch(`${baseURL}${urls.movie(id)}`, options);
             return await response.json();
         } catch (error) {
             const e = error as Error;
@@ -57,7 +57,7 @@ const moviesService = {
 
     getTrailer: async (id: string): Promise<ITrailers> => {
         try {
-            const response = await fetch(`${baseURL}/${urls.trailer(id)}`, options);
+            const response = await fetch(`${baseURL}${urls.trailer(id)}`, options);
             return await response.json();
         } catch (error) {
             const e = error as Error;
@@ -68,7 +68,7 @@ const moviesService = {
 
     getCharacters: async (id: string): Promise<IChar> => {
         try {
-            const response = await fetch(`${baseURL}/${urls.characters(id)}`, options);
+            const response = await fetch(`${baseURL}${urls.characters(id)}`, options);
             return await response.json();
         } catch (error) {
             const e = error as Error;
