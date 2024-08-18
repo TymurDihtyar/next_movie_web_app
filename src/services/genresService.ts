@@ -16,8 +16,9 @@ const genresService = {
             const response = await fetch(`${baseURL}/${urls.genre}`, options);
             return await response.json();
         } catch (error) {
-            console.error('Error fetching movies:', error.message);
-            throw new Error(error)
+            const e = error as Error;
+            console.error('Помилка при отриманні жанрів:', e.message);
+            throw new Error(e.message);
         }
     },
 
@@ -26,10 +27,12 @@ const genresService = {
             const response = await fetch(`${baseURL}/${urls.movies}?page=${page}&&with_genres=${with_genres}`, options);
             return await response.json();
         } catch (error) {
-            console.error('Error fetching movies:', error.message);
-            throw new Error(error)
+            const e = error as Error;
+            console.error('Помилка при отриманні фільмів:', e.message);
+            throw new Error(e.message);
         }
     },
 }
+
 
 export {genresService}

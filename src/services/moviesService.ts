@@ -16,8 +16,9 @@ const moviesService = {
             const response = await fetch(`${baseURL}/${urls.movies}?page=${page}`, options);
             return await response.json();
         } catch (error) {
-            console.error('Error fetching movies:', error.message);
-            throw new Error(error)
+            const e = error as Error;
+            console.error('Помилка при отриманні всіх фільмів:', e.message);
+            throw new Error(e.message);
         }
     },
 
@@ -26,8 +27,9 @@ const moviesService = {
             const response = await fetch(`${baseURL}/${urls.moviesByType}/${type}?page=${page}`, options);
             return await response.json();
         } catch (error) {
-            console.error('Error fetching movies:', error.message);
-            throw new Error(error)
+            const e = error as Error;
+            console.error('Помилка при отриманні згідно типів:', e.message);
+            throw new Error(e.message);
         }
     },
 
@@ -36,8 +38,9 @@ const moviesService = {
             const response = await fetch(`${baseURL}/${urls.search}?page=${page}&&query=${query}`, options);
             return await response.json();
         } catch (error) {
-            console.error('Error fetching movies:', error.message);
-            throw new Error(error)
+            const e = error as Error;
+            console.error('Помилка при отриманні при пошуку:', e.message);
+            throw new Error(e.message);
         }
     },
 
@@ -46,8 +49,9 @@ const moviesService = {
             const response = await fetch(`${baseURL}/${urls.movie(id)}`, options);
             return await response.json();
         } catch (error) {
-            console.error('Error fetching movies:', error.message);
-            throw new Error(error)
+            const e = error as Error;
+            console.error('Помилка при отриманні одного фільму:', e.message);
+            throw new Error(e.message);
         }
     },
 
@@ -56,8 +60,9 @@ const moviesService = {
             const response = await fetch(`${baseURL}/${urls.trailer(id)}`, options);
             return await response.json();
         } catch (error) {
-            console.error('Error fetching movies:', error.message);
-            throw new Error(error)
+            const e = error as Error;
+            console.error('Помилка при отриманні трейлерів:', e.message);
+            throw new Error(e.message);
         }
     },
 
@@ -66,8 +71,9 @@ const moviesService = {
             const response = await fetch(`${baseURL}/${urls.characters(id)}`, options);
             return await response.json();
         } catch (error) {
-            console.error('Error fetching movies:', error.message);
-            throw new Error(error)
+            const e = error as Error;
+            console.error('Помилка при отриманні акторів:', e.message);
+            throw new Error(e.message);
         }
     },
 }
