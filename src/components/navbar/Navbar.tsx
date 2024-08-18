@@ -62,7 +62,6 @@ export default function Navbar() {
                             <Menu>
                                 <MenuButton
                                     rounded={'full'}
-                                    variant={'link'}
                                     cursor={'pointer'}>
                                     <Avatar
                                         size={'sm'}
