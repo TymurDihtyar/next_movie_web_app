@@ -1,36 +1,5 @@
 {
-  "routes": [
-    {
-      "src": "/",
-      "dest": "/"
-    },
-    {
-      "src": "/movies",
-      "dest": "/movies"
-    },
-    {
-      "src": "/movies/search",
-      "dest": "/movies/search"
-    },
-    {
-      "src": "/movies/top_rated",
-      "dest": "/movies/top_rated"
-    },
-    {
-      "src": "/movies/upcoming",
-      "dest": "/movies/upcoming"
-    },
-    {
-      "src": "/movies/now_playing",
-      "dest": "/movies/now_playing"
-    },
-    {
-      "src": "/movies/:id",
-      "dest": "/movies/:id"
-    },
-    {
-      "src": "/genres/:id",
-      "dest": "/genres/:id"
-    }
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
   ]
 }
