@@ -1,5 +1,6 @@
 import {IChar, IData, IOneMove, ITrailers} from "@/interfaces";
 import {baseURL, urls} from "@/constants/urls";
+import {loadGetInitialProps} from "next/dist/shared/lib/utils";
 
 const options: RequestInit = {
     cache: 'no-cache',

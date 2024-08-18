@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
-import { moviesService } from "@/services/moviesService";
 import { IMovie } from "@/interfaces";
 import MainGrid from "@/components/movie/MainGrid";
+import { moviesService } from "@/services/moviesService";
 import { genresService } from "@/services/genresService";
 
 const SCROLL_THRESHOLD = 150;
@@ -15,7 +15,7 @@ interface IProps {
     title: string;
 }
 
-const MoviePage: React.FC<IProps> = ({ movieType, title, searchText, genre }) => {
+const MoviePage: React.FC<IProps> = ({ movieType, searchText, genre, title }) => {
     const [page, setPage] = useState(2);
     const [movies, setMovies] = useState<IMovie[]>([]);
     const [totalPages, setTotalPages] = useState<number>(1);
@@ -28,6 +28,7 @@ const MoviePage: React.FC<IProps> = ({ movieType, title, searchText, genre }) =>
 
         if (movieType) {
             const response = await moviesService.getByType(movieType, page);
+            console.log("response", response);
             results = response.results;
             total_pages = response.total_pages;
         } else if (searchText) {
