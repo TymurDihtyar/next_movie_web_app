@@ -11,7 +11,6 @@ const SearchForm = () => {
     const router = useRouter();
 
     const search = (keyWord: IKeyWord) => {
-        console.log(keyWord.keyword);
         reset();
         router.push(`/movies/search?query=${keyWord.keyword}`);
     };
